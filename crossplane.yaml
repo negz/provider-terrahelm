@@ -1,0 +1,23 @@
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-terrahelm
+  annotations:
+    meta.crossplane.io/maintainer: Nic Cope <negz@upbound.io>
+    meta.crossplane.io/source: github.com/negz/provider-terrahelm
+    meta.crossplane.io/description: |
+      It's provider-terraform and provider-helm!
+    meta.crossplane.io/readme: |
+      It's provider-terraform and provider-helm!
+    friendly-name.meta.crossplane.io: Provider TerraHelm
+spec:
+  crossplane:
+    version: "v1.11.1"
+  dependsOn:
+  - provider: xpkg.upbound.io/upbound/provider-terraform
+    version: "v0.5.0"
+  - provider: xpkg.upbound.io/crossplane-contrib/provider-helm
+    version: "v0.14.0"
+  controller:
+    # This 'controller' is just while true;sleep 10;done.
+    image: negz/meta-provider-controller:v0.1.0
